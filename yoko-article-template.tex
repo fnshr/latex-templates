@@ -1,0 +1,103 @@
+\documentclass[ % ドキュメントクラス
+  uplatex,%upLaTeXを使う
+  papersize%紙のサイズがデフォルトと違う場合、PDFにうまく伝える
+]{jsarticle}
+
+%% フォント関連
+\usepackage[T1]{fontenc} % フォントでT1を使うこと
+\usepackage{textcomp} % フォントでTS1を使うこと
+\usepackage[utf8]{inputenc} % ファイルがUTF8であること
+\usepackage{newpxtext,newpxmath} % ローマンと数式の字体をPalatinoに基づいた新PXフォントで
+\usepackage{zi4}%等幅フォントをInconsolataで
+\usepackage[multi,deluxe,jis2004]{otf}
+\usepackage[prefernoncjk]{pxcjkcat} % なるべく「半角」扱いで。
+
+%% 図表など
+% 図の読みこみのために
+\usepackage[dvipdfmx, hiresbb]{graphicx, xcolor}
+\usepackage{booktabs} % 表の横罫線
+\usepackage{lscape}  % 表などを90度回転させる
+
+%% 囲み枠
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable} % ページをまたいで分割できるように
+
+% ソースコードをきれいに出力する
+\usepackage{listings}
+\lstset{ % 色々な設定
+    language=R, % プログラミング言語名（ここではR言語）
+    basicstyle=\ttfamily, % 基本的にタイプライター体にする
+    numbers=left, % 左側に行番号を表示
+    numberstyle=\small, % 行番号は小さめに
+    numbersep=16pt, % 行番号をどれだけ離すか
+    % showspaces=true,% スペースを表示したければtrueにする 
+    xleftmargin=25pt, % 左側のマージン
+    frame=single, %ソースコードを囲むフレーム
+    framesep=10pt, %フレームとコードの間隔
+    backgroundcolor=\color[gray]{0.95}, % 背景色
+    breaklines=true % 長い行は改行する
+}
+\renewcommand{\lstlistingname}{ソースコード}
+
+% misc
+\usepackage{okumacro} % 圏点などのため
+\usepackage{pxrubrica} % ルビをつける（okumacroのrubyは使わない）
+
+% hyperrefの設定
+\usepackage[dvipdfmx,%
+   bookmarks=true,%PDFにしおりをつける
+   bookmarksnumbered=true,%しおりに節番号などをつける
+   colorlinks=false,%リンクには色をつけない
+   hyperfootnotes=false,%脚注からのリンクを作らない
+   pdfborder={0 0 0},%枠なし
+   pdfpagelayout=TwoPageRight,%奇数頁が右側になるような見開きモードで開く
+   pdfpagemode=UseNone]{hyperref}
+
+% PDFにしたときの文字化けを防ぐ
+\usepackage{pxjahyper}
+
+
+\title{タイトル}
+\author{著者名}
+\date{日付}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+ここには文章の内容を大まかに示したもの、
+すなわち、概要が入る。
+ここには文章の内容を大まかに示したもの、
+すなわち、概要が入る。
+ここには文章の内容を大まかに示したもの、
+すなわち、概要が入る。
+ここには文章の内容を大まかに示したもの、
+すなわち、概要が入る。
+\end{abstract}
+
+
+\section{最初の節の見出し}
+
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+
+\subsection{最初の小節の見出し}
+
+ここには最初の小節の文章が入る。
+ここには最初の小節の文章が入る。
+ここには最初の小節の文章が入る。
+ここには最初の小節の文章が入る。
+ここには最初の小節の文章が入る。
+
+\subsubsection{最初の小々節の見出し}
+
+ここには文章が入る。
+ここには文章が入る。
+ここには文章が入る。
+ここには文章が入る。
+ここには文章が入る。
+
+\end{document}
