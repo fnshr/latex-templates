@@ -1,0 +1,175 @@
+\documentclass[ % ドキュメントクラス
+    uplatex, % upLaTeXを使う
+    tate, % 縦書き
+%    twocolumn, % 二段組
+    hanging_punctuation, % ぶら下げ組
+    paper=b6, % 用紙サイズ
+    reference_mark=interlinear, %注の合標を行間に
+    book % 書籍のためのスタイル
+]{jlreq}
+
+%% フォント関連
+\usepackage[T1]{fontenc} % フォントでT1を使うこと
+\usepackage{textcomp} % フォントでTS1を使うこと
+\usepackage[utf8]{inputenc} % ファイルがUTF8であること
+\usepackage[multi,deluxe,jis2004]{otf}
+\usepackage[prefernoncjk]{pxcjkcat} % なるべく「半角」扱いで。
+
+%% 図表など
+% 図の読みこみのために
+\usepackage[dvipdfmx, hiresbb]{graphicx, xcolor}
+\usepackage{booktabs} % 表の横罫線
+
+%% 囲み枠
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable} % ページをまたいで分割できるように
+
+%% misc
+\usepackage{okumacro} % 圏点などのために
+\usepackage{pxrubrica} % ルビをつける（okumacroのrubyは使わない）
+\usepackage{sfkanbun} % 漢文
+% sfkanbun パッケージは、
+% http://xymtex.my.coocan.jp/fujitas2/texlatex/index.html 
+% から入手可能
+
+%% 見出しのスタイルの設定
+% chapterの定義
+\DeclareTobiraHeading{chapter}{1}{% chapter を扉見出しに
+  format={\null\vfil {\huge\gtfamily\bfseries {\LARGE #1}#2}}, % 見出しのフォント
+  label_format={第\thechapter 章\hspace{2zw}} % ラベルのフォーマット
+}
+\DeclareBlockHeading{chapter}{1}{ % chapter を別行見出しに
+  pagebreak=cleardoublepage, % 章を始める前に改丁
+  label_format={第\thechapter 章}, % ラベルのフォーマット
+  font={\gtfamily\LARGE}, % 見出しのフォント
+  lines=3,after_lines=2, % 見出しのために5行取り、後ろの方が2行分広い
+  indent=2zw % インデント
+}
+
+% section の定義
+\renewcommand{\thesection}{} % 節の番号はなしが基本
+\DeclareBlockHeading{section}{2}{ % section を別行見出しに
+  font={\gtfamily}, % 見出しのフォント
+  lines=1, before_lines=1% 見出しの前に1行取る
+}
+
+%% 目次の設定
+\setcounter{tocdepth}{1} % sectionまでを目次に
+
+%% hyperrefの設定
+\usepackage[dvipdfmx,%
+    pdftitle=タイトル, % PDFのタイトル
+    pdfauthor=作成者, % PDFの作成者
+    bookmarks=true, % PDFにしおりをつける
+    bookmarksnumbered=true, % しおりに節番号などをつける
+    colorlinks=false, % リンクには色をつけない
+    hyperfootnotes=false, % 脚注からのリンクを作らない
+    pdfborder={0 0 0}, % 枠なし
+    pdfdirection=R2L, % 開く方向
+    pdfpagelayout=TwoPageRight, % 奇数頁が右側になるような見開きモードで開く
+    pdfpagemode=UseNone]{hyperref}
+
+% PDFにしたときのしおりの文字化けを防ぐ
+\usepackage{pxjahyper}
+
+% hyperref を使っているときに
+% 目次でのページ番号の向きを適切にする
+\makeatletter
+\def\contentsline#1#2#3#4{\csname l@#1\endcsname{\hyper@linkstart{link}{#4}{#2}\hyper@linkend}{\rensuji{#3}}}
+\makeatother
+
+
+\begin{document}
+% maketitle を使わずに独自のタイトルページを作る
+\begin{titlepage}
+  \vspace*{10mm}
+  \noindent{\fontsize{30pt}{48pt}\gtfamily\bfseries タイトル}
+  \vfill
+
+  \begin{flushright}
+    {\gtfamily\bfseries\huge 著者 名}
+  \end{flushright}
+\end{titlepage}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{序}
+\chapter*{序}
+
+ここには序の内容が入る。
+
+\tableofcontents % 目次
+
+
+\chapter{最初の章}
+
+ここは最初の章の冒頭の文章が入る。
+ここは最初の章の冒頭の文章が入る。
+
+
+\section{最初の節の見出し}
+
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+ここは最初の節の文章が入る。
+
+
+\section{第二の節の見出し}
+
+ここは第二の節の文章が入る。
+ここは第二の節の文章が入る。
+ここは第二の節の文章が入る。
+ここは第二の節の文章が入る。
+ここは第二の節の文章が入る。
+
+
+\chapter{便利な命令}
+
+\section{文字装飾}
+
+  \bou{傍点}・\kenten{圏点}・\kasen{傍線}
+
+\section{特殊文字}
+
+  \ajMaru{0} \ajMaru{5} \ajMaru{42} \ajMaru{100}
+  \ajMaru*{0} \ajMaru*{5} \ajMaru*{42} \ajMaru*{100}
+  \ajKuroMaru{0} \ajKuroMaru{5} \ajKuroMaru{42} \ajKuroMaru{100}
+  \ajKuroMaru*{0} \ajKuroMaru*{5} \ajKuroMaru*{42} \ajKuroMaru*{100}
+
+  \ajKaku{0} \ajKaku{5} \ajKaku{42} \ajKaku{100}
+  \ajKaku*{0} \ajKaku*{5} \ajKaku*{42} \ajKaku*{100}
+  \ajKuroKaku{0} \ajKuroKaku{5} \ajKuroKaku{42} \ajKuroKaku{100}
+  \ajKuroKaku*{0} \ajKuroKaku*{5} \ajKuroKaku*{42} \ajKuroKaku*{100}
+
+  \ajMaruKaku{0} \ajMaruKaku{5} \ajMaruKaku{42} \ajMaruKaku{100}
+  \ajMaruKaku*{0} \ajMaruKaku*{5} \ajMaruKaku*{42} \ajMaruKaku*{100}
+  \ajKuroMaruKaku{0} \ajKuroMaruKaku{5} \ajKuroMaruKaku{42} \ajKuroMaruKaku{100}
+  \ajKuroMaruKaku*{0} \ajKuroMaruKaku*{5} \ajKuroMaruKaku*{42} \ajKuroMaruKaku*{100}
+
+
+「こら〳〵」「どれ〴〵」
+
+参加者は、\rensuji{12} 人だった。
+
+
+\section{注釈}
+
+脚注\sidenote{脚注。}を表示する。
+
+後注\endnote{これが後注の文章である。}を表示する。
+
+割注\warichu{これが割注の文章である。}を表示する。
+
+
+\section{漢文}
+
+% \kundoku{漢字}{ルビ}{送り仮名}{返り点}[肩返り点](句読点)
+
+\kundoku{未}{いま}{ダ}{レ}
+\kundoku{知}{}{ラ}{二}
+仁
+\kundoku{義}{}{ヲ}{一}
+\kundoku{也}{}{}{}(。)
+
+\end{document}
