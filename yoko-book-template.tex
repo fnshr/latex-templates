@@ -208,131 +208,35 @@
 ここは第二の節の文章が入る。
 ここは第二の節の文章が入る。
 
-\chapter{解説}
+\chapter{便利な命令}
 
 \begin{summary}
 この章では、\LaTeX で文章を書くときによく使う命令などを紹介する。
 あわせて、本テンプレートで定義してある命令などについても紹介する。
 \end{summary}
 
-\section{タイプセットのための準備}
-
-\subsection{環境構築}
-
-\LaTeX の環境を構築するには、\TeX Live をインストールするのが手軽である。
-詳しいインストール方法は、\TeX wiki の 
-\url{https://texwiki.texjp.org/?TeX%20Live} に書かれている。
-
-また、奥村・黒木〔著〕『美文書入門第7版』（以下、『美文書入門』）に付属している DVD からインストールすることもできる。
-
-\subsection{ソースファイルの作成}
-
-\subsubsection{ソースファイルの文字コード}
-\TeX のソースファイルの文字コードは、UTF-8 にする。
-プリアンブルには、必ず \verb|\usepackage[utf8]{inputenc}| と書いておく。
-
-\subsubsection{ソースファイル編集用のソフト}
-自分は、ソースファイルの編集とタイプセットには、
-(1) TeXworks か、(2) Atom を使っている。
-いずれもテキストエディタとして用いることができ、ソフト上から簡単にタイプセットすることができる。
-
-ただし、(2) のAtom はそのままではタイプセットができない。
-このため、タイプセット用の拡張パッケージとして \texttt{latex} を導入しておく必要がある。
-
-また、以下のパッケージを導入しておくと、編集の際に便利である。
-
-\begin{itemize}
-  \item \texttt{language-latex}: 構文ハイライトを行う。
-  \item \texttt{latexer}: 命令などの自動補完を行う。
-  \item \texttt{pdf-view}: Atom 上で PDF を表示するためのもので、できあがった PDF を確認するときに使える。
-\end{itemize}
-
-なお、Atom の使用については、
-\TeX wiki の \url{https://texwiki.texjp.org/?Atom} に詳しい情報がある。
+\section{フォント・文字装飾など}
+{\mcfamily\bfseries 太明朝体}・{\gtfamily ゴシック体}・{\gtfamily\bfseries 太ゴシック体}・{\gtfamily\ebseries 極太ゴシック体}・{\mgfamily 丸ゴシック体} 
 
 
-\subsection{タイプセットの流れ}
-タイプセットの際には、まず up\LaTeX でソースファイルから DVI ファイルを作るようにしている。
-そして、dvipdfmx を使って、DVI ファイルから PDF にしている。
+\kenten{圏点}
+\index{けんてん@圏点}
 
-ただ、実際にタイプセットするときは、
-up\LaTeX と dvipdfmx を個別に実行する必要はない。
-ptex2pdf というものが用意されているので、
-こちらを使うようにしている。
-ptex2pdf を使うと、
-up\LaTeX と dvipdfmx が順次実行され、
-ソースファイルから PDF が作成される。
-TeXworks を使うにせよ、Atom を使うにせよ、
-ptex2pdf を呼び出すようにしておけば、
-一発でタイプセットできる。
-
-
-\section{フォント関連}
-
-\subsection{エンコーディング}
-プリアンブルにおいて、
-\verb|\usepackage[T1]{fontenc}| と \verb|\usepackage{textcomp}| を
-指定しておく。
-こうすることによって、ソースコード上に入力された
-アクセント付きの文字などをそのまま出すことが
-できる\footnote{“é” と出力したい場合、\verb|``\'{e}''| とわざわざ入力する必要はなく、直接 \verb|“é” |と入力すればよい。}。
-
-また、プリアンブルにおいて、
-\verb|\usepackage[prefernoncjk]{pxcjkcat}|と指定しておけば、
-全角でも半角でも出力できる文字が、
-なるべく半角あつかいで出力されるようになる。
-これを指定しないと、
-“coup d’état”が
-“\withcjktokenforced{coup d’état}”
-のように出力されてしまう。
-
-このあたりのことの詳細は、
-『美文書入門』第7版の12.4節に載っている。
-
-\subsection{欧文フォント}
-Palatino に基づいた新PXフォントを使うために、
-\texttt{newpxtext}, \texttt{newpxmath} パッケージを
-読みこんでいる。
-
-また、等幅フォントを Inconsolata にするために、\texttt{zi4} パッケージを読みこんでいる。
-
-
-\subsection{日本語フォント}
-
-\texttt{otf} パッケージを読みこむことで、
-日本語フォントを色々使えるようにしている。
-
-この \texttt{otf} パッケージに \texttt{deluxe} オプションをつけると、以下のように色々な書体が使えるようになる。
-
-\begin{itemize}
-  \item \verb|{\mcfamily\bfseries 太明朝体}| → {\mcfamily\bfseries 太明朝体}
-  \item \verb|{\gtfamily ゴシック体}| → {\gtfamily ゴシック体}
-  \item \verb|{\gtfamily\bfseries 太ゴシック体}| → {\gtfamily\bfseries 太ゴシック体}
-  \item \verb|{\gtfamily\ebseries 極太ゴシック体}| → {\gtfamily\ebseries 極太ゴシック体} 
-  \item \verb|{\mgfamily 丸ゴシック体}| → {\mgfamily 丸ゴシック体} 
-\end{itemize}
+\subsection{ルビ}
+\index{ルビ}
+\jruby{黄}{き}と\jruby{赤}{あか}と
+\jruby{緑}{みどり}の
+\jruby{高価}{こう|か}で
+\jruby{貴重}{き|ちょう}なものを
+\jruby{購入}{こう|にゅう}しました。
+\jruby[g]{閑話休題}{それはさておき}、
+\jruby[g]{昨日}{きのう}は
+\jruby[g]{心太}{ところてん}を
+ありがとう。
 
 
 \section{図表}
-
-\subsection{図の出力}
-図を読みこんで出力するために、
-プリアンブルで \verb|\usepackage[dvipdfmx, hiresbb]{graphicx, xcolor}| を指定している。
-
-図は基本的に PDF で用意しておくのが便利である。
-
-\verb|barplot01.pdf| という図を出力したい場合は、
-\verb|figure| 環境の中に \verb|\includegraphics{hoge.pdf}| 
-という命令を入れる。
-\verb|\includegraphics| の後に、
-\verb|\caption| という命令を入れることで、
-キャプションを表示することができる。
-
-また、\verb|\label{fg:barplot-example}| という
-ラベルを \verb|figure| 環境の中に置いておけば、
-\verb|図\ref{fg:barplot-example}| で
-図の番号「図\ref{fg:barplot-example}」を
-取得できる。
+最初の図の番号は「図\ref{fg:barplot-example}」である。
 
 \begin{figure}[h]
   \centering
@@ -342,23 +246,7 @@ Palatino に基づいた新PXフォントを使うために、
 \end{figure}
 
 
-\subsection{表の出力}
-表を出力するときには、\verb|table| 環境を使う。\verb|table| 環境の中に、\verb|tabular| 環境を記述することで表を作成する。
-なお、横罫線を引くために、\texttt{booktabs} パッケージを使う。
-縦罫線はなるべく引かない。
-
-
-\verb|table| 環境の前に、
-\verb|\caption| という命令を入れて、
-キャプションを表示することができる。
-なお、図の場合はキャプションを図の下に置くが、
-表の場合はキャプションを表の上に置くのが普通である。
-
-また、\verb|\label{tb:table-example}| という
-ラベルを \verb|table| 環境の中に置いておけば、
-\verb|表\ref{tb:table-example}| で
-表の番号「表\ref{tb:table-example}」を
-取得できる。
+最初の表の番号は「表\ref{tb:table-example}」である。
 
 \begin{table}[h]
   \caption{これは表の例で、3行3列から成り立っている。}
@@ -372,13 +260,7 @@ Palatino に基づいた新PXフォントを使うために、
   \end{center}
 \end{table}
 
-\subsection{横長の大きな図表}
-
-横長の大きな図表を載せるときに、
-90度回転させて表示させたいことがある。
-この場合は、\texttt{lscape} パッケージが提供する
-\verb|landscape| 環境を使う。
-表\ref{tb:wide-table-example}がその例である。
+表\ref{tb:wide-table-example}は横長の表を90度回転したものである。
 
 \begin{landscape}
   \begin{table}
@@ -398,11 +280,6 @@ Palatino に基づいた新PXフォントを使うために、
 
 \section{囲み枠}
 
-囲み枠を作るには、\texttt{tcolorbox} パッケージを使うのが便利である。
-
-このテンプレートでは、\verb|note| という環境を用意して、
-コラム的な囲み記事を書くときに使えるようにしている。
-
 \begin{note}{囲み記事のタイトル}
 囲み記事の文章がここに入る。
 囲み記事の文章がここに入る。
@@ -414,15 +291,8 @@ Palatino に基づいた新PXフォントを使うために、
 囲み記事の文章がここに入る。
 \end{note}
 
-また、このテンプレートでは、以下のような参考情報を出力する命令として、\verb|\sanko| を用意してある。
 
 \sanko{短い参考情報を提示するときのために使う。}
-
-
-\section{ソースコードの出力}
-
-シンタックスハイライトがなされたソースコードを出力するには、
-\texttt{listings} パッケージを用いる。
 
 \begin{lstlisting}[caption=簡単なプログラムの例, label=ls:example]
 x <- c(24, 23, 15, 52, 63)
@@ -430,61 +300,31 @@ mean(x) # 平均を計算
 \end{lstlisting}
 
 
-\section{その他の文字装飾}
+\section{特殊文字}
 
-\subsection{圏点}
-\kenten{圏点}を使うことで、語句を強調することができる。
-\kenten{圏点}を出力するには、
-\texttt{okumacro} パッケージを読みこんだ上で、
-\verb|\kenten{圏点}| とする。 
+  \ajMaru{0} \ajMaru{5} \ajMaru{42} \ajMaru{100}
+  \ajMaru*{0} \ajMaru*{5} \ajMaru*{42} \ajMaru*{100}
+  \ajKuroMaru{0} \ajKuroMaru{5} \ajKuroMaru{42} \ajKuroMaru{100}
+  \ajKuroMaru*{0} \ajKuroMaru*{5} \ajKuroMaru*{42} \ajKuroMaru*{100}
 
+  \ajKaku{0} \ajKaku{5} \ajKaku{42} \ajKaku{100}
+  \ajKaku*{0} \ajKaku*{5} \ajKaku*{42} \ajKaku*{100}
+  \ajKuroKaku{0} \ajKuroKaku{5} \ajKuroKaku{42} \ajKuroKaku{100}
+  \ajKuroKaku*{0} \ajKuroKaku*{5} \ajKuroKaku*{42} \ajKuroKaku*{100}
 
-\subsection{ルビ}
-ルビをふるには、\texttt{pxrubrica} パッケージの \verb|\jruby| という命令を使う
-\footnote{\texttt{pxrubrica} パッケージでは、 \verb|\ruby| という命令でルビをふる機能も付いているが、\texttt{okumacro} パッケージの \verb|\ruby| とかぶるため、用いないものとする。}。
-
-基本的には、\verb#\jruby{漢字}{かん|じ}# の形で書く。
-グループルビにしたければ、\verb|\jruby[g]{弥生}{やよい}| のように、\verb|[g]| をつける。
-
-\begin{tcolorbox}[title=ルビの例, sidebyside, sidebyside align=top, righthand ratio=0.7]
-\jruby{黄}{き}と\jruby{赤}{あか}と
-\jruby{緑}{みどり}の
-\jruby{高価}{こう|か}で
-\jruby{貴重}{き|ちょう}なものを
-\jruby{購入}{こう|にゅう}しました。
-\jruby[g]{閑話休題}{それはさておき}、
-\jruby[g]{昨日}{きのう}は
-\jruby[g]{心太}{ところてん}を
-ありがとう。
-\tcblower
-\begin{verbatim}
-\jruby{黄}{き}と\jruby{赤}{あか}と
-\jruby{緑}{みどり}の
-\jruby{高価}{こう|か}で
-\jruby{貴重}{き|ちょう}なものを
-\jruby{購入}{こう|にゅう}しました。
-\jruby[g]{閑話休題}{それはさておき}、
-\jruby[g]{昨日}{きのう}は
-\jruby[g]{心太}{ところてん}を
-ありがとう。
-\end{verbatim}
-\end{tcolorbox}
+  \ajMaruKaku{0} \ajMaruKaku{5} \ajMaruKaku{42} \ajMaruKaku{100}
+  \ajMaruKaku*{0} \ajMaruKaku*{5} \ajMaruKaku*{42} \ajMaruKaku*{100}
+  \ajKuroMaruKaku{0} \ajKuroMaruKaku{5} \ajKuroMaruKaku{42} \ajKuroMaruKaku{100}
+  \ajKuroMaruKaku*{0} \ajKuroMaruKaku*{5} \ajKuroMaruKaku*{42} \ajKuroMaruKaku*{100}
 
 
+  \ajLig{○問} \ajLig{○答} \ajLig{○例} \ajLig{●問} \ajLig{●答} \ajLig{●例}
 
-\section{\texttt{hyperref}}
-\texttt{hyperref} パッケージにより、PDF にリンクを貼ったり、
-PDF にしおりをつけたりすることができる。
+  \ajLig{□問} \ajLig{□答} \ajLig{□例} \ajLig{■問} \ajLig{■答} \ajLig{■例}
 
-なお、日本語のしおりの文字化けを防ぐには、
-プリアンブルで \verb|\usepackage{pxjahyper}| と記述する。
+  \ajLig{◇問} \ajLig{◇答} \ajLig{◇例} \ajLig{◆問} \ajLig{◆答} \ajLig{◆例}
 
-\section{索引}
-索引をつけるには、プリアンブルで \verb|\usepackage{makeidx}| と
-\verb|\makeindex| を宣言しておく。
-
-\section{目次}
-
-目次を出力したい場所に、\verb|\tableofcontents| と記述することで、目次を出力することができる。
+\backmatter
+\printindex
 
 \end{document}
