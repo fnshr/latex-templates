@@ -213,18 +213,18 @@ Palatino に基づいた新PXフォントを使うようにしている。
 なお、横罫線を引くために、`booktabs` パッケージを使う。
 縦罫線はなるべく引かない。
 
-`table` 環境の前に、 `\caption` という命令を入れて、キャプションを表示することができる。なお、図の場合はキャプションを図の下に置くが、表の場合はキャプションを表の上に置くのが普通である。
+`tabular` 環境の前に、 `\caption` という命令を入れて、キャプションを表示することができる。なお、図の場合はキャプションを図の下に置くが、表の場合はキャプションを表の上に置くのが普通である。
 
 また、`\caption` のあとに、`\label{tb:table-example}` というラベルを置いておけば、 `\ref{tb:table-example}` で表の番号を取得できる。
 
-![図の出力例。](images/latex-my-template-example-table.png)
+![表の出力例。](images/latex-my-template-example-table.png)
 
 
 また、横長の大きな図表を載せるときに、 90度回転させて表示させたいことがある。
 この場合は、`lscape` パッケージが提供する `landscape` 環境を使う。
 以下はその例である。
 
-![90度回転させた図の出力例。](images/latex-my-template-example-landscape.png)
+![90度回転させた表の出力例。](images/latex-my-template-example-landscape.png)
 
 ### 囲み枠
 
@@ -447,7 +447,7 @@ TeXwiki の「[索引作成](https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD
 一回のコンパイルではうまくいかないことがある。
 状況によっては複数回コンパイルする必要がある。
 
-![割注の出力例](images/latex-my-template-example-warichu.png)
+![割注の出力例。](images/latex-my-template-example-warichu.png)
 
 ### 漢文
 
